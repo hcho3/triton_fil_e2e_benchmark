@@ -2,15 +2,11 @@ docker pull nvcr.io/nvidia/tritonserver:24.08-py3-sdk
 
 docker run -it --gpus '"device=0"' \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    -v $(pwd)/model_repository:$(pwd)/model_repository \
-    -v $(pwd)/profile_results:/profile_results \
-    --net=host nvcr.io/nvidia/tritonserver:24.08-py3-sdk \
+    -v $(pwd):$(pwd) --net=host \
+    nvcr.io/nvidia/tritonserver:24.08-py3-sdk \
     model-analyzer profile \
     --model-repository $(pwd)/model_repository/ \
-    --profile-models xgb_model \
     --triton-launch-mode=docker \
     --output-model-repository-path tmp \
-    --export-path /profile_results \
-    --run-config-search-max-concurrency 1 \
-    --run-config-search-max-model-batch-size 1 \
-    --run-config-search-max-instance-count 1
+    --export-path $(pwd)/profile_results_gpu \
+    -f $(pwd)/search_config_gpu.yaml

@@ -1,0 +1,12 @@
+run_config_search_disable: True
+
+profile_models:
+  xgb_model:
+    parameters:
+      concurrency: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+      batch_sizes: [1, 2, 4, 8, 16, 32, 64, 128]
+    model_config_parameters:
+      max_batch_size: [128]
+      instance_group:
+        - kind: KIND_GPU
+          count: [1, 2, 3, 4]
