@@ -10,3 +10,14 @@ docker run -it --gpus '"device=0"' \
     --output-model-repository-path tmp \
     --export-path $(pwd)/profile_results_gpu \
     -f $(pwd)/search_config_gpu.yaml
+
+docker run -it \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v $(pwd):$(pwd) --net=host \
+    nvcr.io/nvidia/tritonserver:24.08-py3-sdk \
+    model-analyzer profile \
+    --model-repository $(pwd)/model_repository/ \
+    --triton-launch-mode=docker \
+    --output-model-repository-path tmp \
+    --export-path $(pwd)/profile_results_cpu \
+    -f $(pwd)/search_config_cpu.yaml

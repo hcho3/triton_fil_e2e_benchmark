@@ -8,5 +8,5 @@ profile_models:
     model_config_parameters:
       max_batch_size: [1024]
       instance_group:
-        - kind: KIND_GPU
+        - kind: KIND_CPU
           count: [1, 2, 3, 4]
