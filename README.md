@@ -2,7 +2,7 @@
 
 ## Benchmark results on AWS EC2
 We ran the benchmark (see below) on AWS EC2 and measured the throughput
-and latency for end-to-end inference. See `results.ipynb`.
+and latency for end-to-end inference. See `aws_ec2_benchmark_results/summary.ipynb`.
 
 ## How to run benchmark
 
