@@ -23,6 +23,10 @@ parameters [
   {
     key: "output_class"
     value: { string_value: "false" }
+  },
+  {
+    key: "use_experimental_optimizations"
+    value: { string_value: "true" }
   }
 ]
 
