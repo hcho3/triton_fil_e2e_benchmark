@@ -1,3 +1,4 @@
+docker pull nvcr.io/nvidia/tritonserver:24.08-py3
 docker pull nvcr.io/nvidia/tritonserver:24.08-py3-sdk
 
 docker run -it --gpus '"device=0"' \
